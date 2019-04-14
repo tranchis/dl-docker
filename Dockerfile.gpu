@@ -116,8 +116,9 @@ RUN apt-get update && apt-get install -y \
 	rm -rf /var/lib/apt/lists/*
 
 # Install other useful Python packages using pip
-RUN pip --no-cache-dir install --upgrade ipython && \
-	pip --no-cache-dir install \
+RUN apt-get -y remove ipython
+RUN pip --no-cache-dir install --upgrade ipython
+RUN pip --no-cache-dir install \
 		Cython \
 		ipykernel \
 		jupyter \
